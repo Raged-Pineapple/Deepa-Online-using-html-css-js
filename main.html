@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play Video</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: black;
+            color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden; /* Prevent scrollbars */
+        }
+        iframe {
+            display: none; /* Initially hide the video */
+            position: fixed; /* Fix position to cover viewport */
+            top: 0;
+            left: 0;
+            width: 100vw; /* Full viewport width */
+            height: 100vh; /* Full viewport height */
+            border: none; /* Remove default border */
+            z-index: 10; /* Ensure iframe is on top */
+        }
+        button {
+            position: relative; /* Keep the button in place */
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            z-index: 20; /* Ensure button is on top */
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Click to Play Video</h1>
+        <iframe id="deepaVideo" src="https://www.youtube.com/embed/6s0Ay9IGNww?enablejsapi=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        <button id="playButton">Click here to light the deepa</button>
+    </div>
+
+    <script>
+        document.getElementById("playButton").addEventListener("click", function() {
+            var iframe = document.getElementById("deepaVideo"); // Get the video iframe
+            iframe.style.display = "block"; // Show the video
+            var src = iframe.src;
+            iframe.src = src.includes("autoplay=1") ? src : src + "&autoplay=1"; // Autoplay the video by adding autoplay parameter
+
+            // Enter fullscreen mode
+            if (iframe.requestFullscreen) {
+                iframe.requestFullscreen();
+            } else if (iframe.mozRequestFullScreen) { // Firefox
+                iframe.mozRequestFullScreen();
+            } else if (iframe.webkitRequestFullscreen) { // Chrome, Safari and Opera
+                iframe.webkitRequestFullscreen();
+            } else if (iframe.msRequestFullscreen) { // IE/Edge
+                iframe.msRequestFullscreen();
+            }
+        });
+    </script>
+</body>
+</html>

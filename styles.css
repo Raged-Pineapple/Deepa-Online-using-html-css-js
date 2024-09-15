@@ -1,0 +1,33 @@
+<style>
+    body {
+        text-align: center;
+        font-family: Arial, sans-serif;
+        background-color: black;
+        color: white;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden; /* Prevent scrollbars */
+    }
+    iframe {
+        display: none; /* Initially hide the video */
+        position: fixed; /* Fix position to cover viewport */
+        top: 0;
+        left: 0;
+        width: 100vw; /* Full viewport width */
+        height: 100vh; /* Full viewport height */
+        border: none; /* Remove default border */
+        z-index: 10; /* Ensure iframe is on top */
+    }
+    button {
+        position: relative; /* Keep the button in place */
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        z-index: 20; /* Ensure button is on top */
+    }
+</style>
